@@ -27,7 +27,7 @@ class AuthController {
     suspend fun reg(@RequestBody model: ReqRegModel) : ResAuthReg {
         return authService.reg(model, passwordEncoder,repository)
     }
-    @PostMapping("auth")
+    @PostMapping("login")
     suspend fun auth(@RequestBody model: ReqAuthModel) : ResAuthModel {
         return authService.auth(model, passwordEncoder, repository)
     }
