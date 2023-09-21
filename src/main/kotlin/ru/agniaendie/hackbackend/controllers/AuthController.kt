@@ -2,6 +2,7 @@ package ru.agniaendie.hackbackend.controllers
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.crypto.password.PasswordEncoder
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -15,6 +16,7 @@ import ru.agniaendie.hackbackend.services.AuthService
 
 @RestController
 @RequestMapping("auth")
+@CrossOrigin
 class AuthController {
     @Autowired
     lateinit var repository : IUserRepository

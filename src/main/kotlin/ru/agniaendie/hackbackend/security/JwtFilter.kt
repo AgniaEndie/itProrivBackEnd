@@ -18,13 +18,14 @@ import ru.agniaendie.hackbackend.services.JwtTokenService
 @RequiredArgsConstructor
 class JwtFilter constructor(var repository: IUserRepository) : OncePerRequestFilter(){
     val log = LoggerFactory.getLogger(this.javaClass)
-    val jwtTokenService: JwtTokenService = JwtTokenService()
+    val jwtTokenService: JwtTokenService  = JwtTokenService()
     override fun doFilterInternal(
         request: HttpServletRequest,
         response: HttpServletResponse,
         filterChain: FilterChain
     ) {
         val header = request.getHeader("Authorization")
+        log.error(header)
         if (header != null && header.startsWith("Bearer ")) {
             val token = header.substring(7)
             if (jwtTokenService.validateToken(token)) {
