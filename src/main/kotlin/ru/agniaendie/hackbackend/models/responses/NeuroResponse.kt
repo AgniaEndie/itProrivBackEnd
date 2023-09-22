@@ -5,4 +5,4 @@ import lombok.Setter
 
 @Getter
 @Setter
-data class ResAuthAuth(val message:String)
+data class NeuroResponse(val neuroId:Int)

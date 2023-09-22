@@ -33,10 +33,8 @@ class SecurityConfig(repos: IUserRepository) {
         return http.csrf { csrf -> csrf.disable() }.cors { cors -> cors.configurationSource(corsConfigurationSource())}
             .authorizeHttpRequests { auth ->
                 auth.requestMatchers(
-                    "auth/**",
-                    "main/skins/**",
-                    "main/capes/**",
-                    "main/assets/**"
+                    "auth/login",
+                    "main/**"
                 ).permitAll().anyRequest().authenticated()
             }
             .sessionManagement { sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 import ru.agniaendie.hackbackend.models.ReqAuthModel
 import ru.agniaendie.hackbackend.models.ReqRegModel
 import ru.agniaendie.hackbackend.models.responses.ResAuthModel
-import ru.agniaendie.hackbackend.models.responses.ResAuthReg
+import ru.agniaendie.hackbackend.models.responses.ResAuthAuth
 import ru.agniaendie.hackbackend.repositories.IUserRepository
 import ru.agniaendie.hackbackend.services.AuthService
 
@@ -26,7 +26,7 @@ class AuthController {
 
     val authService: AuthService = AuthService()
     @PostMapping("reg")
-    suspend fun reg(@RequestBody model: ReqRegModel) : ResAuthReg {
+    suspend fun reg(@RequestBody model: ReqRegModel) : ResAuthAuth {
         return authService.reg(model, passwordEncoder,repository)
     }
     @PostMapping("login")

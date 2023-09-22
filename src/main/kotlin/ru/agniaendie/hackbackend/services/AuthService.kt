@@ -6,20 +6,20 @@ import ru.agniaendie.hackbackend.models.ReqRegModel
 import ru.agniaendie.hackbackend.models.Role
 import ru.agniaendie.hackbackend.models.User
 import ru.agniaendie.hackbackend.models.responses.ResAuthModel
-import ru.agniaendie.hackbackend.models.responses.ResAuthReg
+import ru.agniaendie.hackbackend.models.responses.ResAuthAuth
 import ru.agniaendie.hackbackend.repositories.IUserRepository
 import java.lang.Exception
 import java.util.*
 
 class AuthService {
     private val tokenService = JwtTokenService()
-    fun reg(model: ReqRegModel, passwordEncoder: PasswordEncoder,repository: IUserRepository) : ResAuthReg{
+    fun reg(model: ReqRegModel, passwordEncoder: PasswordEncoder,repository: IUserRepository) : ResAuthAuth{
         val user = User(UUID.randomUUID().toString(),model.login,passwordEncoder.encode(model.password), Role.USER)
         return try{
             repository.save(user)
-            ResAuthReg("Регистрация прошла успешно")
+            ResAuthAuth("Регистрация прошла успешно")
         }catch (e:Exception){
-            ResAuthReg("Такой пользователь уже существует")
+            ResAuthAuth("Такой пользователь уже существует")
         }
 
     }
