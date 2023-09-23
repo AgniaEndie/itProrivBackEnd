@@ -33,4 +33,10 @@ class MainController {
     suspend fun uploadImage(@RequestParam("file") file: MultipartFile): ResUpload {
         return service.uploadImage(file, elemRepository, materialRepository,creatorRepository)
     }
+
+    @GetMapping("getImage/{code}")
+    @CrossOrigin
+    suspend fun getImage(@PathVariable code:String): ByteArray {
+        return service.getImage(code)
+    }
 }
